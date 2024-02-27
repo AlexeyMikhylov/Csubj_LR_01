@@ -1,5 +1,8 @@
 #include <stdio.h>
 
-int main() {
-
+int main() 
+{
+	printf("pussy");
+	////.......
+	return 0;
 }
