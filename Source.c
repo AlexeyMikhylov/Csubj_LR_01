@@ -104,7 +104,7 @@ int vowels(void)
 		{
 			printf("\n");
 			printf("%s", ModString);
-			for (int c = 0; c < characters; c++)
+			for (int c = 0; c < characters; c++) //
 			{
 				printf("%c", userArray[i][c]);
 			}
