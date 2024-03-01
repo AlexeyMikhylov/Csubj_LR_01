@@ -4,7 +4,7 @@
 
 #define rows 20
 #define characters 129
-#define words 20
+#define words 5
 
 int wordCounter = 0;
 
@@ -16,7 +16,7 @@ int main()
 
 	//output();
 	printf("\n");
-	disowels();
+	consonantCounter();
 
 	return 0;
 }
@@ -87,9 +87,9 @@ int output(void)
 	}
 }
 
-int disowels(void) //count disowels in strings and adding this number in beginning of string (kinda)
+int consonantCounter(void) //count consonants in strings and adding this number in beginning of string (kinda)
 {
-	char ModString[250];
+	char MyStr[100], ModString[250];
 	char EnDisowels[] = "qwrtpsdfghjklzxcvbnmQWRTPSDFGHJKLZXCVBNM";
 	int CountDisowels = 0; 
 
