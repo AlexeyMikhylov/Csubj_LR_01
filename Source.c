@@ -35,7 +35,6 @@ int input(void) //esc = break;
 
 			if (character != 13 && character != 27)
 			{
-
 				userArray[i][j] = character;
 				fprintf(stdout, "%c", character);
 
