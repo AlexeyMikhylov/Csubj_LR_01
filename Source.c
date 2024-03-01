@@ -4,7 +4,7 @@
 
 #define rows 20
 #define characters 129
-#define words 5
+#define words 20
 
 int wordCounter = 0;
 
@@ -27,6 +27,8 @@ int input(void) //esc = break;
 
 	for (int i = 0; i < rows; i++)
 	{
+		wordCounter = 0;
+
 		for (int j = 0; j < characters; j++)
 		{
 			character = getch();
@@ -39,12 +41,13 @@ int input(void) //esc = break;
 
 				if (j != 0)
 				{
-					if (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
+					if (userArray[i][j - 1] != ' ' && userArray[i][j] == ' ')
 					{
 						wordCounter += 1;
 
-						if (wordCounter == words + 1)
+						if (wordCounter == words)
 						{
+							printf("\n");
 							break;
 						}
 					}
