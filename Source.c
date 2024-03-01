@@ -16,12 +16,12 @@ int main()
 
 	//output();
 	printf("\n");
-	vowels();
+	disowels();
 
 	return 0;
 }
 
-int input(void) //esc = break;  
+int input(void) // rows <= 20; letters <= 128; (2 <= ) words <= 20; enter - next string; esc - end of input;
 {
 	char character;
 
@@ -87,9 +87,9 @@ int output(void)
 	}
 }
 
-int vowels(void)
+int disowels(void) //count disowels in strings and adding this number in beginning of string (kinda)
 {
-	char MyStr[100], ModString[250];
+	char ModString[250];
 	char EnDisowels[] = "qwrtpsdfghjklzxcvbnmQWRTPSDFGHJKLZXCVBNM";
 	int CountDisowels = 0; 
 
@@ -117,6 +117,7 @@ int vowels(void)
 		{
 			printf("\n");
 			printf("%s", ModString);
+
 			for (int c = 0; c < characters; c++)
 			{
 				printf("%c", userArray[i][c]);
