@@ -15,7 +15,7 @@ int main()
 	input();
 
 	//output();
-	printf("\n");
+
 	consonantCounter();
 
 	return 0;
@@ -95,6 +95,7 @@ int consonantCounter(void) //count consonants in strings and adding this number 
 
 	int i = 0;
 
+	printf("\n");
 	for (i; i < rows; i++)
 	{
 		CountDisowels = 0;
