@@ -2,14 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-
 #define rows 20
 #define characters 129
-//count vowels in the string and add this number in start of it
-int arraySize;
+#define words 5
 
-char* userArray[rows][characters]; //массив строк, >=20 строк
-//char userString[129];
+int wordCounter = 0;
+
+char* userArray[rows][characters];
 
 int main()
 {
@@ -31,19 +30,31 @@ int input(void) //esc = break;
 		for (int j = 0; j < characters; j++)
 		{
 			character = getch();
-			
-			//to see
 
 			if (character != 13 && character != 27)
 			{
+
 				userArray[i][j] = character;
 				fprintf(stdout, "%c", character);
+
+				if (j != 0)
+				{
+					if (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
+					{
+						wordCounter += 1;
+
+						if (wordCounter == words + 1)
+						{
+							break;
+						}
+					}
+				}
 			}
-			else if (character == 27)
+			else if (character == 27) //esc pressed
 			{
 				return 0;
 			}
-			else
+			else //enter pressed
 			{
 				printf("\n");
 				break;
@@ -76,8 +87,8 @@ int output(void)
 
 int vowels(void)
 {
-	char MyStr[100], ModString[250]; //ModString в 2.5 раза > MyStr -> чтобы вместить в себя число гласных и MyStr
-	char EnDisowels[] = "qwrtpsdfghjklzxcvbnmQWRTPSDFGHJKLZXCVBNM"; //Английские гласные
+	char MyStr[100], ModString[250];
+	char EnDisowels[] = "qwrtpsdfghjklzxcvbnmQWRTPSDFGHJKLZXCVBNM";
 	int CountDisowels = 0; 
 
 	int i = 0;
@@ -98,13 +109,13 @@ int vowels(void)
 			}
 		}
 
-		sprintf(ModString, "%d %c", CountDisowels, ' ');
+		sprintf(ModString, "%d %c", CountDisowels, ' '); 
 
 		if (userArray[i][0] != '\0')
 		{
 			printf("\n");
 			printf("%s", ModString);
-			for (int c = 0; c < characters; c++) //
+			for (int c = 0; c < characters; c++)
 			{
 				printf("%c", userArray[i][c]);
 			}
@@ -115,6 +126,4 @@ int vowels(void)
 			return 0;
 		}
 	}
-
-	
 }
