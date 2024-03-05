@@ -4,7 +4,7 @@
 
 #define rows 20
 #define characters 129
-#define words 5
+#define words 6
 
 int wordCounter = 0;
 
@@ -21,8 +21,7 @@ int main()
 	return 0;
 }
 
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\/\/\/!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-int input(void) // rows <= 20; letters <= 128; (2 <= ) words <= 20; enter - next string; esc - end of input;
+int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next string; esc - end of input;
 {
 	char character;
 
@@ -41,8 +40,10 @@ int input(void) // rows <= 20; letters <= 128; (2 <= ) words <= 20; enter - next
 
 				if (j != 0)
 				{
-					if (userArray[i][j - 1] != ' ' && userArray[i][j] == ' ')
+					
+					if ((userArray[i][j - 1] != ' ' && userArray[i][j] == ' ')) //|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
 					{
+						
 						wordCounter += 1;
 
 						if (wordCounter == words)
@@ -53,14 +54,18 @@ int input(void) // rows <= 20; letters <= 128; (2 <= ) words <= 20; enter - next
 					}
 				}
 			}
-			else if (character == 27) //esc pressed
+			else if (character == 27 && wordCounter >= 2) //esc pressed
 			{
 				return 0;
 			}
-			else //enter pressed
+			else if (character == 13 && wordCounter >= 2)//enter pressed
 			{
 				printf("\n");
 				break;
+			}
+			else
+			{
+
 			}
 		} 
 	}
@@ -88,7 +93,34 @@ int output(void)
 	}
 }
 
-int consonantCounter(void) //count consonants in strings and adding this number in beginning of string (kinda)
+int checkIfLetter(char letter)
+{
+	char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
+	int isLetter = 0;
+
+	for (int i = 0; i < 56; i++)
+	{
+		if (letter != Letters[i])
+		{
+			isLetter = 0;
+		}
+		else
+		{
+			isLetter = 1;
+		}
+	}
+	
+	if (isLetter == 1)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+int consonantCounter(void)
 {
 	char MyStr[100], ModString[250];
 	char EnDisowels[] = "qwrtpsdfghjklzxcvbnmQWRTPSDFGHJKLZXCVBNM";
