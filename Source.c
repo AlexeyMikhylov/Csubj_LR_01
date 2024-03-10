@@ -22,7 +22,7 @@ int main()
 	return 0;
 }
 
-int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next string; 'esc' - end of input;
+int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next string; 'esc' -> end of input;
 {
 	char character;
 
