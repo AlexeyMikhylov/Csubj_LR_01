@@ -58,7 +58,7 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 				{
 					if (strchr(Letters, userArray[i][j - 2]) != NULL
 						&& strchr(Letters, userArray[i][j - 1]) == NULL
-						&& (userArray[i][j] == ' ')
+						&& userArray[i][j] == ' ')
 					{
 						wordCounter += 1;
 
