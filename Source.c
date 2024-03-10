@@ -72,7 +72,7 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 	}
 }
 
-int isWord(int i, int j)
+int isWord(int i, int j) //if there is at least one letter between spaces, it is a word
 {
 	for (j; j >= 0; j--)
 	{
