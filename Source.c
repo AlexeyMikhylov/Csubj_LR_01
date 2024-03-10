@@ -52,7 +52,9 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 				{
 					
 					//if ((userArray[i][j - 1] != ' ' && userArray[i][j] == ' ')) //|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
-					if (strchr(Letters, userArray[i][j - 1]) != NULL && userArray[i][j] == ' ') //|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
+					//|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
+
+					if (strchr(Letters, userArray[i][j - 1]) != NULL && userArray[i][j] == ' ') 
 					{
 						wordCounter += 1;
 
@@ -100,27 +102,6 @@ int output(void)
 		}
 
 		printf("\n");
-	}
-}
-
-int checkIfLetter(char letter)
-{
-	char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
-	int isLetter = 0, i = 0;
-
-	while (letter == Letters[i])
-	{
-		isLetter = 1;
-		i++;
-	}
-	
-	if (isLetter == 1)
-	{
-		return 1;
-	}
-	else
-	{
-		return 0;
 	}
 }
 
