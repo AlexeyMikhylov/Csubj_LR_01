@@ -12,9 +12,18 @@ char* userArray[rows][characters];
 
 int main()
 {
+	/*if (strchr(Letters, '1') != NULL)
+	{
+		printf("is letter");
+	}
+	else
+	{
+		printf("not a letter");
+	}*/
+
 	input();
 
-	//output();
+	output();
 
 	consonantCounter();
 
@@ -23,6 +32,7 @@ int main()
 
 int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next string; esc - end of input;
 {
+	char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
 	char character;
 
 	for (int i = 0; i < rows; i++)
@@ -41,9 +51,9 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 				if (j != 0)
 				{
 					
-					if ((userArray[i][j - 1] != ' ' && userArray[i][j] == ' ')) //|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
+					//if ((userArray[i][j - 1] != ' ' && userArray[i][j] == ' ')) //|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
+					if (strchr(Letters, userArray[i][j - 1]) != NULL && userArray[i][j] == ' ') //|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
 					{
-						
 						wordCounter += 1;
 
 						if (wordCounter == words)
@@ -96,18 +106,12 @@ int output(void)
 int checkIfLetter(char letter)
 {
 	char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
-	int isLetter = 0;
+	int isLetter = 0, i = 0;
 
-	for (int i = 0; i < 56; i++)
+	while (letter == Letters[i])
 	{
-		if (letter != Letters[i])
-		{
-			isLetter = 0;
-		}
-		else
-		{
-			isLetter = 1;
-		}
+		isLetter = 1;
+		i++;
 	}
 	
 	if (isLetter == 1)
