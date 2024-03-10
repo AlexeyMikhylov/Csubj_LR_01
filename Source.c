@@ -41,11 +41,24 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 
 				if (j != 0)
 				{
-					
-					//if ((userArray[i][j - 1] != ' ' && userArray[i][j] == ' ')) //|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
-					//|| (userArray[i][j - 1] == ' ' && userArray[i][j] != ' ')
 
-					if (strchr(Letters, userArray[i][j - 1]) != NULL && userArray[i][j] == ' ') 
+					if (strchr(Letters, userArray[i][j - 1]) != NULL
+						&& userArray[i][j] == ' ') 
+					{
+						wordCounter += 1;
+
+						if (wordCounter == words)
+						{
+							printf("\n");
+							break;
+						}
+					}
+				}
+				if (j > 2)
+				{
+					if (strchr(Letters, userArray[i][j - 2]) != NULL
+						&& strchr(Letters, userArray[i][j - 1]) == NULL
+						&& (userArray[i][j] == ' ')
 					{
 						wordCounter += 1;
 
