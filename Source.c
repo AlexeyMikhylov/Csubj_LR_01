@@ -12,15 +12,6 @@ char* userArray[rows][characters];
 
 int main()
 {
-	/*if (strchr(Letters, '1') != NULL)
-	{
-		printf("is letter");
-	}
-	else
-	{
-		printf("not a letter");
-	}*/
-
 	input();
 
 	output();
@@ -30,7 +21,7 @@ int main()
 	return 0;
 }
 
-int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next string; esc - end of input;
+int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next string; 'esc' - end of input;
 {
 	char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
 	char character;
