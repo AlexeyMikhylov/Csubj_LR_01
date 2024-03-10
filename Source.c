@@ -6,12 +6,10 @@
 #define characters 129
 #define words 5
 
-int wordCounter = 0;
-int jCurrent = 0;
-
-char* userArray[rows][characters];
-
 char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
+char* userArray[rows][characters];
+int wordCounter = 0;
+
 
 int main()
 {
