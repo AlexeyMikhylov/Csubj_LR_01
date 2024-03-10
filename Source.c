@@ -4,11 +4,13 @@
 
 #define rows 20
 #define characters 129
-#define words 6
+#define words 5
 
 int wordCounter = 0;
 
 char* userArray[rows][characters];
+
+char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
 
 int main()
 {
@@ -23,7 +25,7 @@ int main()
 
 int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next string; 'esc' - end of input;
 {
-	char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
+	
 	char character;
 
 	for (int i = 0; i < rows; i++)
@@ -42,8 +44,9 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 				if (j != 0)
 				{
 
-					if (strchr(Letters, userArray[i][j - 1]) != NULL
-						&& userArray[i][j] == ' ') 
+					//if (strchr(Letters, userArray[i][j - 1]) != NULL
+					//	&& userArray[i][j] == ' ')
+					if (isWord(i, j-1) == 0 && userArray[i][j] == ' ')
 					{
 						wordCounter += 1;
 
@@ -54,7 +57,7 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 						}
 					}
 				}
-				if (j > 2)
+				/*if (j > 2)
 				{
 					if (strchr(Letters, userArray[i][j - 2]) != NULL
 						&& strchr(Letters, userArray[i][j - 1]) == NULL
@@ -68,13 +71,13 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 							break;
 						}
 					}
-				}
+				}*/
 			}
 			else if (character == 27 && wordCounter >= 2) //esc pressed
 			{
 				return 0;
 			}
-			else if (character == 13 && wordCounter >= 2)//enter pressed
+			else if (character == 13 && wordCounter >= 2) //enter pressed
 			{
 				printf("\n");
 				break;
@@ -85,6 +88,18 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 			}
 		} 
 	}
+}
+
+int isWord(int i, int j)
+{
+	for (j; j > 0; j--)
+	{
+		if (strchr(Letters, userArray[i][j]) != NULL && userArray[i][j] != ' ')
+		{
+			return 0; //is a word
+		}
+	}
+	return 1; //isn't a word
 }
 
 int output(void)
