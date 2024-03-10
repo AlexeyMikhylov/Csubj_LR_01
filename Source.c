@@ -7,6 +7,7 @@
 #define words 5
 
 int wordCounter = 0;
+int jCurrent = 0;
 
 char* userArray[rows][characters];
 
@@ -25,7 +26,6 @@ int main()
 
 int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next string; 'esc' - end of input;
 {
-	
 	char character;
 
 	for (int i = 0; i < rows; i++)
@@ -45,7 +45,7 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 				{
 
 					//if (strchr(Letters, userArray[i][j - 1]) != NULL
-					//	&& userArray[i][j] == ' ')
+					//&& userArray[i][j] == ' ')
 					if (isWord(i, j-1) == 0 && userArray[i][j] == ' ')
 					{
 						wordCounter += 1;
@@ -92,14 +92,20 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter - next s
 
 int isWord(int i, int j)
 {
-	for (j; j > 0; j--)
+	for (j; j >= 0; j--)
 	{
-		if (strchr(Letters, userArray[i][j]) != NULL && userArray[i][j] != ' ')
+		if (userArray[i][j] == ' ')
 		{
-			return 0; //is a word
+			return 1; 
+		}
+		else
+		{
+			if (strchr(Letters, userArray[i][j]) != NULL)
+			{
+				return 0;
+			}
 		}
 	}
-	return 1; //isn't a word
 }
 
 int output(void)
