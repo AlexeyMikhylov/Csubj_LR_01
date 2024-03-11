@@ -6,7 +6,7 @@
 #define characters 129
 #define words 5
 
-char Letters[] = "wWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
+char Letters[] = "QqwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmMm";
 char* userArray[rows][characters];
 int wordCounter = 0;
 
