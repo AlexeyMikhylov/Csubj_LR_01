@@ -2,14 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define rows 20
+#define rows 5
 #define characters 129
 #define words 5
 
 char Letters[] = "QqwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmMm";
 char* userArray[rows][characters];
 int wordCounter = 0;
-
 
 int main()
 {
@@ -38,6 +37,8 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 			{
 				userArray[i][j] = character;
 				fprintf(stdout, "%c", character);
+
+				  
 
 				if (j != 0)
 				{
@@ -125,7 +126,6 @@ int consonantCounter(void)
 
 		for (int j = 0; j < characters; j++)
 		{
-
 			for (int k = 0; k < strlen(EnDisowels); k++)
 			{
 				if (userArray[i][j] == EnDisowels[k])
