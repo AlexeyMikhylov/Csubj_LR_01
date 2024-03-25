@@ -95,44 +95,53 @@ int isWord(int i, int j) //если в последовательности си
 		}
 	}*/
 
-	while (j > 0)
+	int thereIsALetter = 0;
+
+	for (j; j >= 0; j--)
 	{
 		if (userArray[i][j] != ' ')
 		{
-			if (strchr(Letters, userArray[i][j]) == NULL)
+			for (int k = 0; k < strlen(Letters); k++)
 			{
-				
-			}
-			else
-			{
-				return 0;
+				if (userArray[i][j] == Letters[k])
+				{
+					thereIsALetter = 1;
+				}
 			}
 		}
-		j--;
+		else
+		{
+			break;
+		}
+	}      
+
+	if (thereIsALetter != 0)
+	{
+		return 0; //is a word
 	}
-	return 1;
+	else
+	{
+		return 1; //not a word
+	}
 }
 
 int output(void)
 {
-	printf("\n\n");
+	printf("\n\nText:\n");
 	for (int i = 0; i < rows; i++)
 	{
 		if (userArray[i][0] != '\0')
 		{
 			for (int j = 0; j < characters; j++)
 			{
-				if (userArray[i][j] != '\0')
-				{
-					printf("%c", userArray[i][j]);
-				}
-				else
-				{
-					printf("\n");
-					break;
-				}
+				printf("%c", userArray[i][j]);
 			}
 		}
+		else
+		{
+			break;
+		}
+		printf("\n");
 	}
 }
 
@@ -143,6 +152,8 @@ int consonantCounter(void)
 	int CountDisowels = 0; 
 
 	int i = 0;
+
+	printf("\n\nModified text:\n");
 
 	for (i; i < rows; i++)
 	{
@@ -168,15 +179,12 @@ int consonantCounter(void)
 
 			for (int c = 0; c < characters; c++)
 			{
-				if (userArray[i][c] != '\0')
-				{
-					printf("%c", userArray[i][c]);
-				}
-				else
-				{
-					break;
-				}
+				printf("%c", userArray[i][c]);
 			}
+		}
+		else
+		{
+			break;
 		}
 	}
 	printf("\n");
