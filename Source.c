@@ -106,17 +106,18 @@ int output(void)
 	printf("\n\nText:\n");
 	for (int i = 0; i < rows; i++)
 	{
-		if (userArray[i][0] != '\0')
+		if (userArray[i][0] != '\0') //если первый символ строки не равен \0, т.е. строка не пуста
 		{
-			for (int j = 0; j < characters; j++)
+			for (int j = 0; j < characters; j++) //то выводим все символы этой строки
 			{
 				printf("%c", userArray[i][j]);
 			}
 		}
-		else
+		else //если строка все-таки пуста, то переходим к следующей строке
 		{
 			break;
 		}
+
 		printf("\n");
 	}
 }
@@ -129,7 +130,7 @@ int consonantCounter(void)
 
 	int i = 0;
 
-	printf("\n\nModified text:\n");
+	printf("\nModified text:\n");
 
 	for (i; i < rows; i++)
 	{
@@ -150,7 +151,6 @@ int consonantCounter(void)
 
 		if (userArray[i][0] != '\0')
 		{
-			printf("\n");
 			printf("%s", ModString);
 
 			for (int c = 0; c < characters; c++)
@@ -162,6 +162,6 @@ int consonantCounter(void)
 		{
 			break;
 		}
+		printf("\n");
 	}
-	printf("\n");
 }
