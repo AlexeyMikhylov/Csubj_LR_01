@@ -69,13 +69,13 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 	}
 }
 
-int isWord(int i, int j) //if there is at least one letter between spaces, it is a word
+int isWord(int i, int j) //если в последовательности сиволов есть хотя бы одна буква до первого пробела, то это слово
 {
-	for (j; j >= 0; j--)
+	/*for (j; j >= 0; j--)
 	{
 		/*if (userArray[i][j] == ' ')
 		{
-			return 1; 
+			return 1;
 		}
 		else
 		{
@@ -85,41 +85,55 @@ int isWord(int i, int j) //if there is at least one letter between spaces, it is
 			}
 		}*/
 
-		if (strchr(Letters, userArray[i][j]) != NULL)
+		/*if (strchr(Letters, userArray[i][j]) != NULL)
 		{
-			return 0;
+
 		}
 		else if (userArray[i][j] == ' ')
 		{
-			break; return 1;
+			return 0;
 		}
-		else
+	}*/
+
+	while (j > 0)
+	{
+		if (userArray[i][j] != ' ')
 		{
-
+			if (strchr(Letters, userArray[i][j]) == NULL)
+			{
+				
+			}
+			else
+			{
+				return 0;
+			}
 		}
-
+		j--;
 	}
+	return 1;
 }
 
 int output(void)
 {
 	printf("\n\n");
 	for (int i = 0; i < rows; i++)
-	{	
-		for (int j = 0; j < characters; j++)
+	{
+		if (userArray[i][0] != '\0')
 		{
-			if (userArray[i][j] != '\0')
+			for (int j = 0; j < characters; j++)
 			{
-				printf("%c", userArray[i][j]);
-			}
-			else
-			{
-				break;
+				if (userArray[i][j] != '\0')
+				{
+					printf("%c", userArray[i][j]);
+				}
+				else
+				{
+					printf("\n");
+					break;
+				}
 			}
 		}
 	}
-
-	printf("\n");
 }
 
 int consonantCounter(void)
@@ -130,7 +144,6 @@ int consonantCounter(void)
 
 	int i = 0;
 
-	printf("\n");
 	for (i; i < rows; i++)
 	{
 		CountDisowels = 0;
