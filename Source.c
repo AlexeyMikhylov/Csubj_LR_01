@@ -71,30 +71,6 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 
 int isWord(int i, int j) //если в последовательности сиволов есть хотя бы одна буква до первого пробела, то это слово
 {
-	/*for (j; j >= 0; j--)
-	{
-		/*if (userArray[i][j] == ' ')
-		{
-			return 1;
-		}
-		else
-		{
-			if (strchr(Letters, userArray[i][j]) != NULL)
-			{
-				return 0;
-			}
-		}*/
-
-		/*if (strchr(Letters, userArray[i][j]) != NULL)
-		{
-
-		}
-		else if (userArray[i][j] == ' ')
-		{
-			return 0;
-		}
-	}*/
-
 	int thereIsALetter = 0;
 
 	for (j; j >= 0; j--)
