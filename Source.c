@@ -156,22 +156,6 @@ int consonantCounter(void)
 
 		sprintf(ModString, "%d %c", CountDisowels, ' '); 
 
-		/*if (userArray[i][0] != '\0')
-		{
-			printf("\n");
-			printf("%s", ModString);
-
-			for (int c = 0; c < characters; c++)
-			{
-				printf("%c", userArray[i][c]);
-			}
-		}
-		/*else
-		{
-			printf("\n");
-			return 0;
-		}*/
-
 		if (userArray[i][0] != '\0')
 		{
 			printf("\n");
