@@ -52,18 +52,18 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 					}
 				}
 			}
-			else if (character == 27 && wordCounter >= 2) //esc pressed
+			else if (character == 27 && wordCounter >= 2) //нажат esc и введено хотя бы 2 слова
 			{
 				return 0;
 			}
-			else if (character == 13 && wordCounter >= 2) //enter pressed
+			else if (character == 13 && wordCounter >= 2) //нажат enter и введено хотя бы 2 слова
 			{
 				printf("\n");
 				break;
 			}
 			else
 			{
-
+				//не введено хотя бы 2 слова
 			}
 		} 
 	}
