@@ -126,6 +126,7 @@ int output(void)
 			}
 		}
 	}
+
 	printf("\n");
 }
 
