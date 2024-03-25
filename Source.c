@@ -105,15 +105,7 @@ int output(void)
 {
 	printf("\n\n");
 	for (int i = 0; i < rows; i++)
-	{
-		/*if (userArray[i][0] != '\0')
-		{
-			for (int j = 0; j < characters; j++)
-			{
-				printf("%c", userArray[i][j]);
-			}
-		}*/
-		
+	{	
 		for (int j = 0; j < characters; j++)
 		{
 			if (userArray[i][j] != '\0')
