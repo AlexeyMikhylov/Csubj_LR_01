@@ -38,8 +38,6 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 				userArray[i][j] = character;
 				fprintf(stdout, "%c", character);
 
-				  
-
 				if (j != 0)
 				{
 					if (isWord(i, j-1) == 0 && userArray[i][j] == ' ')
@@ -75,7 +73,7 @@ int isWord(int i, int j) //if there is at least one letter between spaces, it is
 {
 	for (j; j >= 0; j--)
 	{
-		if (userArray[i][j] == ' ')
+		/*if (userArray[i][j] == ' ')
 		{
 			return 1; 
 		}
@@ -85,7 +83,21 @@ int isWord(int i, int j) //if there is at least one letter between spaces, it is
 			{
 				return 0;
 			}
+		}*/
+
+		if (strchr(Letters, userArray[i][j]) != NULL)
+		{
+			return 0;
 		}
+		else if (userArray[i][j] == ' ')
+		{
+			break; return 1;
+		}
+		else
+		{
+
+		}
+
 	}
 }
 
@@ -94,21 +106,27 @@ int output(void)
 	printf("\n\n");
 	for (int i = 0; i < rows; i++)
 	{
-		if (userArray[i][0] != '\0')
+		/*if (userArray[i][0] != '\0')
 		{
 			for (int j = 0; j < characters; j++)
 			{
 				printf("%c", userArray[i][j]);
 			}
-		}
-		else
+		}*/
+		
+		for (int j = 0; j < characters; j++)
 		{
-			printf("\n");
-			return 0;
+			if (userArray[i][j] != '\0')
+			{
+				printf("%c", userArray[i][j]);
+			}
+			else
+			{
+				break;
+			}
 		}
-
-		printf("\n");
 	}
+	printf("\n");
 }
 
 int consonantCounter(void)
@@ -137,7 +155,7 @@ int consonantCounter(void)
 
 		sprintf(ModString, "%d %c", CountDisowels, ' '); 
 
-		if (userArray[i][0] != '\0')
+		/*if (userArray[i][0] != '\0')
 		{
 			printf("\n");
 			printf("%s", ModString);
@@ -147,10 +165,29 @@ int consonantCounter(void)
 				printf("%c", userArray[i][c]);
 			}
 		}
-		else
+		/*else
 		{
 			printf("\n");
 			return 0;
+		}*/
+
+		if (userArray[i][0] != '\0')
+		{
+			printf("\n");
+			printf("%s", ModString);
+
+			for (int c = 0; c < characters; c++)
+			{
+				if (userArray[i][c] != '\0')
+				{
+					printf("%c", userArray[i][c]);
+				}
+				else
+				{
+					break;
+				}
+			}
 		}
 	}
+	printf("\n");
 }
