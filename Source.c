@@ -162,6 +162,7 @@ int consonantCounter(void)
 		{
 			break;
 		}
+
 		printf("\n");
 	}
 }
