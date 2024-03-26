@@ -4,7 +4,7 @@
 
 #define rows 5
 #define characters 129
-#define words 20
+#define words 5
 
 char Letters[] = "QqwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmMm";
 char* userArray[rows][characters];
@@ -75,7 +75,7 @@ int isWord(int i, int j) //если в последовательности си
 
 	for (j; j >= 0; j--)
 	{
-		if (userArray[i][j] != ' ') // не пробел
+		if (userArray[i][j] != ' ' && userArray[i][j] != '\t') // не пробел и не таб /!/
 		{
 			for (int k = 0; k < strlen(Letters); k++) //по буквам 
 			{
@@ -142,12 +142,14 @@ int consonantCounter(void)
 			{
 				if (userArray[i][j] == EnDisowels[k]) // является ли буква согласной
 				{
-					CountDisowels += 1;
+					CountDisowels++;
 				}
 			}
 		}
 
 		sprintf(ModString, "%d %c", CountDisowels, ' '); // колво согласных и пробел
+
+		CountDisowels = 0;
 
 		if (userArray[i][0] != '\0') // если первый элемент не пустой
 		{
