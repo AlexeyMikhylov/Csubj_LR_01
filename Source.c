@@ -4,7 +4,7 @@
 
 #define rows 5
 #define characters 129
-#define words 5
+#define words 20
 
 char Letters[] = "QqwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmMm";
 char* userArray[rows][characters];
@@ -38,13 +38,13 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 				userArray[i][j] = character;
 				fprintf(stdout, "%c", character);
 
-				if (j != 0)
+				if (j != 0) // если не первый элемент
 				{
-					if (isWord(i, j-1) == 0 && userArray[i][j] == ' ')
+					if (isWord(i, j-1) == 0 && (userArray[i][j] == ' ' || userArray[i][j] == '\t')) // если нажат пробел или таб - проверка на слово
 					{
 						wordCounter += 1;
 
-						if (wordCounter == words)
+						if (wordCounter == words) //если счетчик равен лимиту 
 						{
 							printf("\n");
 							break;
@@ -69,19 +69,19 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 	}
 }
 
-int isWord(int i, int j) //если в последовательности сиволов есть хотя бы одна буква до первого пробела, то это слово
+int isWord(int i, int j) //если в последовательности символов есть хотя бы одна буква до первого пробела, то это слово
 {
-	int thereIsALetter = 0;
+	int thereIsALetter = 0; // флаг опущен
 
 	for (j; j >= 0; j--)
 	{
-		if (userArray[i][j] != ' ')
+		if (userArray[i][j] != ' ') // не пробел
 		{
-			for (int k = 0; k < strlen(Letters); k++)
+			for (int k = 0; k < strlen(Letters); k++) //по буквам 
 			{
-				if (userArray[i][j] == Letters[k])
+				if (userArray[i][j] == Letters[k]) // является ли символ буквой
 				{
-					thereIsALetter = 1;
+					thereIsALetter = 1; // поднятие флага
 				}
 			}
 		}
@@ -91,13 +91,13 @@ int isWord(int i, int j) //если в последовательности си
 		}
 	}      
 
-	if (thereIsALetter != 0)
+	if (thereIsALetter != 0) // если флаг поднят
 	{
-		return 0; //is a word
+		return 0; //это слово
 	}
 	else
 	{
-		return 1; //not a word
+		return 1; //не слово
 	}
 }
 
@@ -138,29 +138,32 @@ int consonantCounter(void)
 
 		for (int j = 0; j < characters; j++)
 		{
-			for (int k = 0; k < strlen(EnDisowels); k++)
+			for (int k = 0; k < strlen(EnDisowels); k++) // по согласным
 			{
-				if (userArray[i][j] == EnDisowels[k])
+				if (userArray[i][j] == EnDisowels[k]) // является ли буква согласной
 				{
 					CountDisowels += 1;
 				}
 			}
 		}
 
-		sprintf(ModString, "%d %c", CountDisowels, ' '); 
+		sprintf(ModString, "%d %c", CountDisowels, ' '); // колво согласных и пробел
 
-		if (userArray[i][0] != '\0')
+		if (userArray[i][0] != '\0') // если первый элемент не пустой
 		{
-			printf("%s", ModString);
+			printf("%s", ModString); 
 
-			for (int c = 0; c < characters; c++)
+			for (int c = 0; c < characters; c++) //вывод всех символов
 			{
 				printf("%c", userArray[i][c]);
 			}
 		}
 		else
 		{
-			break;
+			CountDisowels = 0;
+			break; // если пустая, то следующая 
+			//               test temp
+
 		}
 
 		printf("\n");
