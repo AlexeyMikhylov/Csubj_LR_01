@@ -40,15 +40,15 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 					userArray[i][j] = character;
 					fprintf(stdout, "%c", character);
 				}
-				else
+				else //если нажат backspace
 				{	
-					if (j > 0)
+					if (j > 0) //если это не первый символ в строке
 					{
-						userArray[i][j - 1] = '\0';
+						userArray[i][j - 1] = '\0'; //последний напечатанный символ заменяем на конец строки
 
-						printf("\b \b");
+						printf("\b \b"); //это для красоты отображения
 
-						j = j - 2;
+						j = j - 2; // уменьшаем j на 2, предыдущий символ + нулевой символ
 					}
 				}
 
