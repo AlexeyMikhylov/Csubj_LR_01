@@ -8,7 +8,7 @@
 
 char Letters[] = "QqwWeErRtTyYuUiIoOpPaAsSdDfFgGhHjJkKlLzZxXcCvVbBnNmMm";
 char* userArray[rows][characters];
-int wordCounter = 0;
+unsigned int wordCounter = 0;
 
 int main()
 {
@@ -35,34 +35,50 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 
 			if (character != 13 && character != 27)
 			{
-				if (character != 8)
+				if (character != 8) //если нажат не enter, не escape и не backspace
 				{
 					userArray[i][j] = character;
 					fprintf(stdout, "%c", character);
+
+					if (j != 0) // если не первый элемент
+					{
+						if (isWord(i, j - 1) == 0 && (userArray[i][j] == ' ' || userArray[i][j] == '\t')) // если нажат пробел или таб - проверка на слово
+						{
+							wordCounter += 1;
+
+							if (wordCounter == words) //если счетчик равен лимиту 
+							{
+								printf("\n");
+								break;
+							}
+						}
+					}
 				}
 				else //если нажат backspace
 				{	
-					if (j > 0) //если это не первый символ в строке
+					if (j >= 1) //если это не первый символ в строке
 					{
+						//если последний символ буква, а предпоследний символ пробел или таб, то счетчик слов -1
+						if ( (strchr(Letters, userArray[i][j - 1]) != NULL) && (userArray[i][j - 2] == " " || userArray[i][j - 2] == "\t") )
+						{
+							if (wordCounter > 0)
+								wordCounter -= 1;
+						} //если последний символ пробел, а предпоследний буква, то счетик слов -1
+						else if ((userArray[i][j-1] == ' ' || userArray[i][j - 1] == '\t') && (strchr(Letters, userArray[i][j - 2]) != NULL))
+						{
+							if (wordCounter > 0)
+								wordCounter -= 1;
+						}
+
 						userArray[i][j - 1] = '\0'; //последний напечатанный символ заменяем на конец строки
 
-						printf("\b \b"); //это для красоты отображения
+						printf("\b \b");
 
 						j = j - 2; // уменьшаем j на 2, предыдущий символ + нулевой символ
 					}
-				}
-
-				if (j != 0) // если не первый элемент
-				{
-					if (isWord(i, j - 1) == 0 && (userArray[i][j] == ' ' || userArray[i][j] == '\t')) // если нажат пробел или таб - проверка на слово
+					else
 					{
-						wordCounter += 1;
 
-						if (wordCounter == words) //если счетчик равен лимиту 
-						{
-							printf("\n");
-							break;
-						}
 					}
 				}
 			}
