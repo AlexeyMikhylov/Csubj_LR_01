@@ -30,17 +30,31 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 		wordCounter = 0;
 
 		for (int j = 0; j < characters; j++)
-		{
+		{	
 			character = getch();
 
 			if (character != 13 && character != 27)
 			{
-				userArray[i][j] = character;
-				fprintf(stdout, "%c", character);
+				if (character != 8)
+				{
+					userArray[i][j] = character;
+					fprintf(stdout, "%c", character);
+				}
+				else
+				{	
+					if (j > 0)
+					{
+						userArray[i][j - 1] = '\0';
+
+						printf("\b \b");
+
+						j = j - 2;
+					}
+				}
 
 				if (j != 0) // если не первый элемент
 				{
-					if (isWord(i, j-1) == 0 && (userArray[i][j] == ' ' || userArray[i][j] == '\t')) // если нажат пробел или таб - проверка на слово
+					if (isWord(i, j - 1) == 0 && (userArray[i][j] == ' ' || userArray[i][j] == '\t')) // если нажат пробел или таб - проверка на слово
 					{
 						wordCounter += 1;
 
@@ -143,6 +157,7 @@ int consonantCounter(void)
 				if (userArray[i][j] == EnDisowels[k]) // является ли буква согласной
 				{
 					CountDisowels++;
+					break;
 				}
 			}
 		}
