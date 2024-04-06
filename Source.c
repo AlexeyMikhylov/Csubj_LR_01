@@ -76,10 +76,6 @@ int input(void) // rows <= 20; letters <= 128; 2 <=  words <= 20; enter -> next 
 
 						j = j - 2; // уменьшаем j на 2, предыдущий символ + нулевой символ
 					}
-					else
-					{
-
-					}
 				}
 			}
 			else if (character == 27 && wordCounter >= 2) //нажат esc и введено хотя бы 2 слова
